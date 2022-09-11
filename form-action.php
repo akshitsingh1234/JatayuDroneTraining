@@ -10,12 +10,8 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
         $first_name =  $_REQUEST['firstname'];
         $last_name = $_REQUEST['lastname'];
         $email = $_REQUEST['email'];
-        $number= $_REQUEST['number'];
+        $subject= $_REQUEST['subject'];
 
-if(preg_match('/^[0-9]{11}+$/', $number)) {
-    // the format /^[0-9]{11}+$/ will check for phone number with 11 digits and only numbers
-    echo "Phone Number is Valid <br>";
-  
   
 
 $host = "localhost";
@@ -32,7 +28,7 @@ if (mysqli_connect_errno()) {
     die("Connection error: " . mysqli_connect_error());
 }           
 $sql = "INSERT INTO message VALUES ('$first_name',
-            '$last_name','$email','$number')";
+            '$last_name','$email','$subject')";
 
 if(mysqli_query($conn, $sql)){
             echo "<h3>data stored in a database successfully."
@@ -50,7 +46,7 @@ $sheet = $spreadsheet->getActiveSheet();
 $sheet->setCellValue('A1', 'First Name');
 $sheet->setCellValue('B1', 'Last Name');
 $sheet->setCellValue('C1', 'Email');
-$sheet->setCellValue('D1', 'Phone Number');
+$sheet->setCellValue('D1', 'Subject');
 
 $row_count=2;
 foreach($query_run as $data)
@@ -58,9 +54,13 @@ foreach($query_run as $data)
 $sheet->setCellValue('A'. $row_count, $data['firstname']);
 $sheet->setCellValue('B'. $row_count, $data['lastname']);
 $sheet->setCellValue('C'. $row_count, $data['email']);
-$sheet->setCellValue('D'. $row_count, $data['number']);
+$sheet->setCellValue('D'. $row_count, $data['subject']);
 $row_count++;
+
 }
+$spreadsheet->getActiveSheet()->getStyle('A1:E999')
+    ->getAlignment()->setWrapText(true); 
+$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(30);
 
 $writer = new Xlsx($spreadsheet);
 $writer->save('JatayuDroneTraining.xlsx');
@@ -71,10 +71,7 @@ mysqli_close($conn);
 header("Location: randomtp.php");
 
 
-}
-else{
-    echo "Enter Phone Number with correct format <br>";
-    }
+
 
 
 
