@@ -14,12 +14,9 @@
   font-family:"Arial";
   opacity: 1; 
 }
-
 ::textarea:focus{
   background: #ddd;
 }
-
-
 </style>
 <body>
 <div id="logo">
@@ -187,8 +184,9 @@ Chargers, Connectors etc. in drone flying.</p><br>
     <input type="text" placeholder="Enter First Name" name="firstname" required>
 <label for="lastname" style="color:yellow"><b>Last Name</b></label>
     <input type="text" placeholder="Enter Last Name" name="lastname" required>
- <label for="email" style="color:yellow"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>  
+ <label for="email" style="color:yellow"><b>Email</b></label><br><br>
+    <input name="email"  type="email" placeholder="Enter Email" size="36" pattern=".+\.com"  style="overflow:hidden; resize: none; background: #f1f1f1;
+  opacity:1.0"  required></textarea>  <br><br>
  
 <label for="number" style="color:yellow"><b>Subject</b></label><br><br>
     <textarea name="subject" type="text" placeholder="Enter Subject"  rows="14" cols="35" wrap="soft" maxlength="2000" style="overflow:hidden; resize: none; background: #f1f1f1;
@@ -206,19 +204,23 @@ Chargers, Connectors etc. in drone flying.</p><br>
       });
 </script>
 <script>
+
+
   const btn = document.querySelector("Button");
 btn.addEventListener("click", openloginbox);
 const btn1=document.querySelector("btn");
   btn1.addEventListener("click", submit);
+
 function openloginbox()
 {
   document.getElementById("myForm").style.display = "block";
   
 }
 function closeForm() {
-  document.getElementById("myForm").style.display = "none";
+  
+document.getElementById("myForm").style.display = "none";
+
 }
 </script>
-        
         </body>
         </html>
