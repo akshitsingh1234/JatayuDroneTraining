@@ -184,8 +184,8 @@ Chargers, Connectors etc. in drone flying.</p><br>
     <input type="text" placeholder="Enter First Name" name="firstname" required>
 <label for="lastname" style="color:yellow"><b>Last Name</b></label>
     <input type="text" placeholder="Enter Last Name" name="lastname" required>
- <label for="email" style="color:yellow"><b>Email</b></label><br><br>
-    <input name="email"  type="email" placeholder="Enter Email" size="36" pattern=".+\.com"  style="overflow:hidden; resize: none; background: #f1f1f1;
+ <label for="email" style="color:yellow"><b>Email(Should end in .com,.co,.in)</b></label><br><br>
+    <input name="email"  type="email" placeholder="Enter Email" size="36" pattern=".+\.com|.+\.in|.+\.co"  style="overflow:hidden; resize: none; background: #f1f1f1;
   opacity:1.0"  required></textarea>  <br><br>
  
 <label for="number" style="color:yellow"><b>Subject</b></label><br><br>
