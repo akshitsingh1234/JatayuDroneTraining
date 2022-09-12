@@ -12,8 +12,6 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
         $email = $_REQUEST['email'];
         $subject= $_REQUEST['subject'];
 
-  
-
 $host = "localhost";
 $dbname = "message_db";
 $username = "root";
@@ -60,7 +58,24 @@ $row_count++;
 }
 $spreadsheet->getActiveSheet()->getStyle('A1:E999')
     ->getAlignment()->setWrapText(true); 
+
+$spreadsheet->getActiveSheet()->getStyle("A1:D1")->getFont()->setBold( true );
+$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(20);
+$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(20);
+$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(30);
 $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(30);
+
+$sheet->getStyle('A')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+$sheet->getStyle('B')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+$sheet->getStyle('C')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+$sheet->getStyle('D')->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+
+$sheet->getStyle('A')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('B')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('C')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('D')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+
+
 
 $writer = new Xlsx($spreadsheet);
 $writer->save('JatayuDroneTraining.xlsx');
