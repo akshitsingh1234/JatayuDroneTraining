@@ -23,11 +23,11 @@
 <img src="Website_Pics/Drone.gif" width="1520" height="800">
   <div class="Heading"><h1>Jatayu Drone Academy</h1></div>
 <button class="Button">GET STARTED</button>
-<button class="Button5" type="button" onclick="window.open('https://forms.gle/dkY6MeZWpHDPs59o9')">APPLY</button>
+<button class="Button5" type="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSeZeX1naWXBJV19h4yJ2RVXdeGDHqkiNmOITvAze2Jf0tdopg/viewform')">APPLY</button>
   <div class="Button1"><u>ABOUT</u></div>
   <div class="Button2"><u>CLASS</u></div>
   <div class="Button3"><u>CONTACT</u></div>
-  <div class="Button4"><u>ADMIN_LOGIN</u></div>
+  <div class="Button4" onclick="adminlog()"><u>ADMIN_LOGIN</u></div>
 <br><br><br><br>
 <hr style="height:2px;border-width:0;color:black;background-color:black">
 <br><br><br>
@@ -195,6 +195,19 @@ Chargers, Connectors etc. in drone flying.</p><br>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button> 
 </form>
 </div>
+
+<div id="myadmin">
+  <form  method="get"  id="form-container1">
+    <h1 style="color:yellow">Login</h1>
+    <label for="username" style="color:yellow"><b>Username</b></label>
+    <input type="text" placeholder="Enter username" name="username" id="ab" required>
+<label for="password" style="color:yellow"><b>Password</b></label>
+    <input type="password" placeholder="Enter password" name="password" id="de" required>
+
+    <button type="button" class="btni" onclick="verify()">Submit</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button> 
+</form>
+</div>
 </div>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
@@ -204,23 +217,56 @@ Chargers, Connectors etc. in drone flying.</p><br>
       });
 </script>
 <script>
-
-
   const btn = document.querySelector("Button");
 btn.addEventListener("click", openloginbox);
 const btn1=document.querySelector("btn");
   btn1.addEventListener("click", submit);
-
 function openloginbox()
 {
+document.getElementById("myadmin").style.display = "none";
   document.getElementById("myForm").style.display = "block";
   
 }
+
 function closeForm() {
   
 document.getElementById("myForm").style.display = "none";
-
+document.getElementById("myadmin").style.display = "none";
 }
+
+function adminlog()
+{
+document.getElementById("myForm").style.display = "none";
+document.getElementById("myadmin").style.display = "block";
+}
+
+
+
 </script>
+<script>
+function verify()
+{
+var ajax = new XMLHttpRequest();
+    ajax.open("GET", "data.php", true);
+    ajax.send();
+ 
+    ajax.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            console.log(data);
+if((document.getElementById("ab").value==data[0].Username)&&(document.getElementById("de").value==data[0].Password))
+{
+window.location.href = "welcome.php";
+}
+else
+{
+alert("Enter the right credentials");
+}
+}}}
+</script>
+
+
         </body>
         </html>
+
+
